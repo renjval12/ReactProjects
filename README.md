@@ -1,3 +1,3 @@
 # ReactJs Projects
 
-Please look in .src folders for project .src files. 
+Please look in .src subfolders for .src files for each project
