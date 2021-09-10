@@ -1,51 +1,59 @@
-// import { Component } from "react";
-import { useState } from "react";
-import Failure from "./Failure";
-import Success from "./Success";
+import React, { useState, useRef, useEffect } from "react";
 
-export default function LoginPage() {
+export default function App() {
 
-    const [login] = useState({ userName: 'user123', passWord: 'pass123' })
-    const [input, setInput] = useState({ userNameInput: '', passWordInput: '' })
+  let addItemRef = useRef()
 
-    const checkLogin = (obj) => {
-        
-        if (login.userName === obj.userNameInput && login.passWord === obj.passWordInput) {
-            <Success name={obj.userNameInput} />
-            console.log('success')
-        } else {
-            <Failure />
-            console.log('fail')
-        }
-        // if (login.userName === obj.userNameInput) {
-        //     return <Success name={obj.userNameInput} />
-        // }
+  useEffect(() => {
+    addItemRef.current.focus()
+  }, [])
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    let formData = {
+      addItem: addItemRef.current.value
     }
+    setTodo(todo, formData.addItem)
+  }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
+  const addItem ()
 
-    }
-    const handleChange = (event) => {
+  const [todo, setTodo] = useState([
 
-        setInput({ ...input, [event.target.id]: event.target.value })
-        // console.log(input.userNameInput)
-        // console.log(input.passWordInput)
-        // console.log({ ...input, [event.target.id]: event.target.value })
-        // console.log({ input, [event.target.id]: event.target.value })
-    }
-    // console.log(input)
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input onChange={handleChange} id="userNameInput" placeholder="enter username"></input>
-                <br />
-                <input onChange={handleChange} id="passWordInput" placeholder="enter password"></input>
-                <br />
-                <br />
-                <button onClick={checkLogin(input)}>Login</button>
-            </form>
-            {/* <Success username={input.userNameInput} /> */}
-        </div>
-    )
+    {
+      listItem: 'Pick up dry cleaning',
+    },
+    {
+      listItem: 'Do dishes',
+    },
+    {
+      listItem: 'Vacuum',
+    },
+    {
+      listItem: 'Buy groceries',
+    },
+  ])
+
+
+  return (
+    <div id="App">
+      <h1>To Do List</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="addItem">Add Item:</label>
+        <input
+          id="addItem"
+          ref={addItemRef}
+          type="text"
+        />
+        <button>Add Todo</button>
+      </form>
+      {todo.map((list, index) =>
+        <ul key={index}>
+          <li>{list.listItem}</li>
+          <input id="" type="checkbox" />
+          {/* <button>Do Task</button> */}
+        </ul>
+      )}
+    </div>
+  );
 }
