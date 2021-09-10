@@ -1,0 +1,47 @@
+body {
+  background-color: rgb(98, 244, 241);
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* font-size: calc(10px + 2vmin); */
+  text-align: center;
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#q1 {
+  color: blue;
+  background-color: rgb(189, 189, 255);
+}
+
+#q2 {
+  color: red;
+  background-color: rgb(255, 149, 149);
+}
+
+#q3 {
+  color: green;
+  background-color: rgb(137, 191, 137);
+}
+
+#q4 {
+  color: purple;
+  background-color: rgb(230, 154, 230);
+}
