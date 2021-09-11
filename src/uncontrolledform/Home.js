@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const Home = () => {
+export default function Home() {
 
     let [data, setData] = useState([])
 
@@ -11,12 +11,10 @@ const Home = () => {
             .then(result => setData(result))
     }, [])
 
-    return ( 
+    return (
         <>
             <h1>Home Page</h1>
-            {data.map(item => <p key={item.id}>{ item.title }</p>)}
+            {data.map(item => <p key={item.id}>{item.title}</p>)}
         </>
     );
 }
- 
-export default Home;
