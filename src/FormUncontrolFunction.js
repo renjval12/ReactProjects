@@ -1,6 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState,  } from 'react';
 
 export default function FormUncontrolFunction() {
+
+    const [formData, setFormData] = useState('')
 
     let userNameRef = useRef()
     let passwordRef = useRef()
@@ -13,16 +15,17 @@ export default function FormUncontrolFunction() {
     const handleSubmit = e => {
         e.preventDefault()
 
-        let formData = {
+        let data = {
             username: userNameRef.current.value,
             password: passwordRef.current.value,
             email: emailRef.current.value
         }
 
-        console.log(formData)
+        setFormData(data)
     }
 
     return (
+        <>
         <form onSubmit={handleSubmit}>
 
             <label htmlFor="username">username:</label>
@@ -47,6 +50,15 @@ export default function FormUncontrolFunction() {
 
             <button>Submit</button>
         </form>
+
+        <section>
+            <h1>Form Data</h1>
+            <ul>
+                <li>{formData.username}</li>
+                <li>{formData.email}</li>
+            </ul>
+        </section>
+        </>
     );
 }
 
