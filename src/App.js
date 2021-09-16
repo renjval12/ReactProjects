@@ -1,53 +1,49 @@
-import React from 'react'
+// import { Component } from "react";
+import { useState } from "react";
+import Failure from "./Failure";
+import Success from "./Success";
 
-import Home from './Home'
-import About from './About'
-import Profile from './Profile'
-import Other from './Other'
-import Contact from './FormUncontrolFunction'
+export default function LoginPage() {
 
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+    const [login] = useState({ userName: 'user123', passWord: 'pass123' })
+    const [input, setInput] = useState({ userNameInput: '', passWordInput: '' })
+    const [results, setResults] = useState('')
 
-export default class App extends React.Component {
+    const checkLogin = (obj) => {
+        
+        if (login.userName === obj.userNameInput && login.passWord === obj.passWordInput) {
+            console.log('success')
+            setResults(<Success />)
+        } else {
+            setResults(<Failure/>)
 
-  componentDidMount() { }
+        }
+    }
 
-  componentDidUpdate() { }
+    const handleSubmit = (e) => {
+        e.preventDefault()
 
-  componentWillUnmount() { }
+    }
+    const handleChange = (event) => {
 
-  render() {
-
+        setInput({ ...input, [event.target.id]: event.target.value })
+        // console.log(input.userNameInput)
+        // console.log(input.passWordInput)
+        // console.log({ ...input, [event.target.id]: event.target.value })
+        // console.log({ input, [event.target.id]: event.target.value })
+    }
+    // console.log(input)
     return (
-      <Router>
-
-        <ul>
-          <li><Link to='/'>Home</Link></li>
-          <li><Link to='/profile'>Profile</Link></li>
-          <li><Link to='/about'>About</Link></li>
-          <li><Link to='/contact'>Contact</Link></li>
-          <li><Link to='/other'>Other</Link></li>
-        </ul>
-
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/about' component={About} />
-          <Route path='/profile' component={Profile} />
-          <Route path='/contact' component={Contact} />
-          <Route path='/other' component={Other} />
-        </Switch>
-
-      </Router>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input onChange={handleChange} id="userNameInput" placeholder="enter username"></input>
+                <br />
+                <input onChange={handleChange} id="passWordInput" placeholder="enter password"></input>
+                <br />
+                <br />
+                <button onClick={checkLogin(input)}>Login</button>
+            </form>
+            {/* <Success username={input.userNameInput} /> */}
+        </div>
     )
-  }
 }
-
-
-
-
-
-
-
-
-
-
