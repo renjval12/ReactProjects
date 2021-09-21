@@ -8,13 +8,13 @@ import Contact from './FormUncontrolFunction'
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
-export default class App extends React.Component {
+class App extends React.Component {
 
-  componentDidMount() { }
+  componentDidMount() {}
 
-  componentDidUpdate() { }
+  componentDidUpdate() {}
 
-  componentWillUnmount() { }
+  componentWillUnmount() {}
 
   render() {
 
@@ -42,6 +42,7 @@ export default class App extends React.Component {
   }
 }
 
+export default App;
 
 
 
